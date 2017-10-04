@@ -61,7 +61,9 @@ if [ $INSTALL_NGINX_INSTEAD != 1 ]; then
     sudo apt-get -y install apache2
 
     # Remove "html" and add public
-    mv /var/www/html /var/www/public
+    sudo rm -R /var/www/html
+    sudo mkdir /var/www/public
+    sudo chown vagrant:vagrant /var/www/public
 
     # Clean VHOST with full permissions
     MY_WEB_CONFIG='<VirtualHost *:80>
